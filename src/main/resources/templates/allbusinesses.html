@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #customers {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        #customers td, #customers th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #customers tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        #customers tr:hover {
+            background-color: #ddd;
+        }
+
+        #customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #04AA6D;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<table id="customers">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Phone</th>
+        <th>Address</th>
+        <th>Location</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="data:${all}">
+        <td th:text="${data.name}"></td>
+        <td th:text="${data.phone_number}"></td>
+        <td>
+            [[${data.address.line1}]]<br/>
+            [[${data.address.line2}]]<br/>
+            [[${data.address.state}]]<br/>
+            [[${data.address.city}]]<br/>
+            [[${data.address.country}]]<br/>
+        </td>
+        <td>
+            [[${data.location.latitude}]]<br/>
+            [[${data.location.longitude}]]<br/>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
